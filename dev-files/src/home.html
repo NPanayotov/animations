@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en">
+	<include src="head.html"></include>
+<body>
+	<div class="wrapper">
+		<section class="section">
+			<div class="shell">
+				<h1>Examples:</h1>
+
+				<h2>Simple animation</h2>
+
+				<div class="card">
+					<div class="card__inner">
+						<div class="card__content">
+							<div class="animation animation--logo">
+								<span></span>
+
+								<span></span>
+
+								<span></span>
+
+								<span></span>
+							</div><!-- /.animation -->
+						</div><!-- /.card__content -->
+
+						<div class="card__aside">
+							<div class="code-preview">
+								<h3>HTML</h3>
+
+								<pre>
+									<code class="language-html">
+&lt;div class=&quot;animation animation--logo&quot;&gt;
+	&lt;span&gt;&lt;/span&gt;
+
+	&lt;span&gt;&lt;/span&gt;
+
+	&lt;span&gt;&lt;/span&gt;
+
+	&lt;span&gt;&lt;/span&gt;
+&lt;/div&gt;&lt;!-- /.animation --&gt;
+									</code>
+								</pre>
+
+								<h3>CSS</h3>
+
+								<pre>
+									<code class="language-scss">
+/*  Animation logo  */
+
+.animation--logo {
+	width: 200px;
+	height: 200px;
+
+	span {
+		position: absolute;
+		top: 0;
+		left: 0;
+		display: inline-block;
+		width: 100px;
+		height: 100px;
+		background: #000;
+		animation: logo 8s infinite;
+	}
+
+	span:nth-child(1) {
+		animation-delay: -2s;
+	}
+
+	span:nth-child(2) {
+		animation-delay: -4s;
+	}
+
+	span:nth-child(3) {
+		animation-delay: -6s;
+	}
+
+	span:nth-child(4) {
+		animation-delay: -8s;
+	}
+}
+
+
+@keyframes logo {
+	0% {
+		transform: translate(0, 0) scale(.7);
+		background: #000;
+	}
+
+	25% {
+		transform: translate(100px, 0) scale(.25);
+		background: #000;
+	}
+
+	50% {
+		transform: translate(100px, 100px) scale(1);
+		background: #d12c29
+	}
+
+	75% {
+		transform: translate(0, 100px) scale(.5);
+		background: #d12c29
+	}
+
+	100% {
+		transform: translate(0, 0) scale(.7);
+		background: #000;
+	}
+}
+
+									</code>
+								</pre>
+							</div><!-- /.code-preview -->
+						</div><!-- /.card__aside -->
+					</div><!-- /.card__inner -->
+				</div><!-- /.card -->
+
+				<h2>Advanced animation</h2>
+
+				<div class="card">
+					<div class="card__inner">
+						<div class="card__content">
+							<div class="animation animation--car">
+								<div class="animation__coluds"></div><!-- /.animation__coluds -->
+
+								<div class="animation__mountains"></div><!-- /.animation__mountains -->
+
+								<span class="animation__sun"></span>
+
+								<div class="animation__trees"></div><!-- /.animation__trees -->
+
+								<div class="animation__car">
+									<span class="animation__car-inner"></span>
+
+									<span class="animation__car-window"></span>
+								</div><!-- /.animation__car -->
+
+								<span class="animation__ground"></span>
+
+								<span class="animation__sky"></span>
+							</div><!-- /.animation -->
+						</div><!-- /.card__content -->
+
+						<div class="card__aside">
+							<div class="code-preview">
+								<h3>HTML</h3>
+
+								<pre>
+									<code class="language-html">
+&lt;div class=&quot;animation animation--car&quot;&gt;
+	&lt;div class=&quot;animation__coluds&quot;&gt;&lt;/div&gt;&lt;!-- /.animation__coluds --&gt;
+
+	&lt;div class=&quot;animation__mountains&quot;&gt;&lt;/div&gt;&lt;!-- /.animation__mountains --&gt;
+
+	&lt;span class=&quot;animation__sun&quot;&gt;&lt;/span&gt;
+
+	&lt;div class=&quot;animation__trees&quot;&gt;&lt;/div&gt;&lt;!-- /.animation__trees --&gt;
+
+	&lt;div class=&quot;animation__car&quot;&gt;
+		&lt;span class=&quot;animation__car-inner&quot;&gt;&lt;/span&gt;
+
+		&lt;span class=&quot;animation__car-window&quot;&gt;&lt;/span&gt;
+	&lt;/div&gt;&lt;!-- /.animation__car --&gt;
+
+	&lt;span class=&quot;animation__ground&quot;&gt;&lt;/span&gt;
+
+	&lt;span class=&quot;animation__sky&quot;&gt;&lt;/span&gt;
+&lt;/div&gt;&lt;!-- /.animation --&gt;
+									</code>
+								</pre>
+
+								<h3>CSS</h3>
+
+								<pre>
+									<code class="language-scss">
+/*  Animation car  */
+
+.animation--car {
+	border-radius: 5px;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+
+	.animation__car {
+		position: absolute;
+		z-index: 10;
+		bottom: 10px;
+		left: 110px;
+		height: 120px;
+		width: 370px;
+	}
+
+	.animation__car-inner {
+		display: block;
+		width: 100%;
+		height: 100%;
+		position: relative;
+		z-index: 2;
+		background: url(../images/car.png) 0 0 no-repeat;
+		background-size: contain;
+	}
+
+	.animation__car:before {
+		content: '';
+		position: absolute;
+		bottom: -20px;
+		right: 100%;
+		z-index: 0;
+		background: url(../images/lights.png) 0 0 no-repeat;
+		width: 233px;
+		height: 82px;
+		margin-right: -100px;
+		opacity: 0;
+		animation: lights 100s infinite;
+	}
+
+	.animation__car-window {
+		position: absolute;
+		top: 5px;
+		left: 70px;
+		z-index: 1;
+		background: linear-gradient(to right, #1F51FF, #ab20fd);
+		background-size: 400% 73px;
+		width: 150px;
+		height: 73px;
+		border-top-left-radius: 82px 74px;
+		animation: neon 2s infinite alternate;
+	}
+
+	.animation__car-inner:before,
+	.animation__car-inner:after {
+		content: '';
+		position: absolute;
+		bottom: 0;
+		z-index: 3;
+		width: 50px;
+		height: 50px;
+		background: url(../images/tire.png) 0 0 no-repeat;
+		background-size: contain;
+		animation: rotate 1s infinite linear;
+	}
+
+	.animation__car-inner:before {
+		left: 33px;
+	}
+	.animation__car-inner:after {
+		right: 56px;
+		animation-delay: -0.8s;
+	}
+
+	.animation__coluds {
+		position: absolute;
+		top: 25px;
+		right: 0;
+		z-index: 4;
+		width: 10000px;
+		height: 300px;
+		background: url(../images/clouds.png) 0 0 repeat-x;
+		background-size: 480px 157px;
+		animation: moveX 2500s infinite linear;
+	}
+
+	.animation__trees {
+		position: absolute;
+		bottom: 0;
+		right: 0;
+		z-index: 9;
+		width: 15000px;
+		height: 220px;
+		background: url(../images/trees.png) 0 0 repeat-x;
+		animation: moveX 1000s infinite linear;
+	}
+
+	.animation__mountains {
+		position: absolute;
+		bottom: 0;
+		right: 0;
+		z-index: 8;
+		width: 15000px;
+		height: 350px;
+		background: url(../images/mountains.png) 0 0 repeat-x;
+		animation: moveX 2000s infinite linear;
+	}
+
+	.animation__sun {
+		position: absolute;
+		z-index: 2;
+		bottom: 100%;
+		right: 20px;
+		width: 100px;
+		height: 100px;
+		background: #f9d71c;
+		border-radius: 50%;
+		animation: sunset 100s infinite linear;
+	}
+
+	.animation__ground {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		z-index: 8;
+		width: 100%;
+		height: 95px;
+		background: #5b4a48;
+	}
+
+	.animation__sky {
+		position: absolute;
+		bottom: 70px;
+		top: 0;
+		left: 0;
+		z-index: 1;
+		width: 100%;
+		animation: daynight 100s infinite;
+	}
+}
+
+
+@keyframes lights {
+	0%, 68% {
+		opacity: 0;
+	}
+
+	69%, 93% {
+		opacity: 1;
+	}
+
+	94%, 100% {
+		opacity: 0;
+	}
+}
+
+
+@keyframes daynight {
+	0% {
+		background-color: #73b0f1; //morning
+	}
+
+	25% {
+		background-color: #f6ea68; //midday
+	}
+
+	55% {
+		background-color: #cc762a; // afternoon
+	}
+
+	70%, 90% {
+		background-color: #272828; // night
+	}
+
+	100% {
+		background-color: #73b0f1; //morning
+	}
+}
+
+@keyframes sunset {
+	0% {
+		transform: translate(0, 0);
+	}
+	100% {
+		transform: translate(-400%, 500%);
+	}
+}
+
+@keyframes moveX {
+	0% {
+		transform: translateX(0);
+	}
+	100% {
+		transform: translateX(100%);
+	}
+}
+
+@keyframes rotate {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+@keyframes neon {
+	0% {
+		background-position: 0 0;
+	}
+	100% {
+		background-position: 100% 0;
+	}
+}
+
+									</code>
+								</pre>
+							</div><!-- /.code-preview -->
+						</div><!-- /.card__aside -->
+					</div><!-- /.card__inner -->
+
+					<h3>Assets used:</h3>
+
+					<ul class="list-assets">
+						<li>
+							<img src="assets/images/car.png" alt="">
+						</li>
+
+						<li>
+							<img src="assets/images/clouds.png" alt="">
+						</li>
+
+						<li>
+							<img src="assets/images/mountains.png" alt="">
+						</li>
+
+						<li>
+							<img src="assets/images/trees.png" alt="">
+						</li>
+
+						<li>
+							<img src="assets/images/tire.png" alt="">
+						</li>
+					</ul><!-- /.list-assets -->
+				</div><!-- /.card -->
+
+				<h2>Simple steps animation</h2>
+
+				<div class="card">
+					<div class="card__inner">
+						<div class="card__content">
+							<div class="animation animation--coin"></div><!-- /.animation -->
+						</div><!-- /.card__content -->
+
+						<div class="card__aside">
+							<div class="code-preview">
+								<h3>HTML</h3>
+
+								<pre>
+									<code class="language-html">
+&lt;div class=&quot;animation animation--coin&quot;&gt;&lt;/div&gt;&lt;!-- /.animation --&gt;
+									</code>
+								</pre>
+
+								<h3>CSS</h3>
+
+								<pre>
+									<code class="language-scss">
+.animation--coin {
+	width: 286px;
+	height: 291px;
+	background: url(../images/steps2.png) 0 0 no-repeat;
+	animation: coin 0.4s steps(6) infinite,
+		   coin-up-down 1s infinite alternate ease-in;
+}
+
+@keyframes coin {
+	0% {
+		background-position: 0 0;
+	}
+
+	100% {
+		background-position: -1716px 0;
+	}
+}
+
+@keyframes coin-up-down {
+	0% {
+		transform: translateY(-25%);
+	}
+
+	100% {
+		transform: translateY(25%);
+	}
+}
+
+									</code>
+								</pre>
+							</div><!-- /.code-preview -->
+						</div><!-- /.card__aside -->
+					</div><!-- /.card__inner -->
+
+					<h3>Assets used:</h3>
+
+					<ul class="list-assets list-assets--large">
+						<li>
+							<img src="assets/images/steps2.png" alt="">
+						</li>
+					</ul><!-- /.list-assets -->
+				</div><!-- /.card -->
+
+
+				<h2>Advanced steps animations</h2>
+
+				<div class="card">
+					<div class="card__inner">
+						<div class="card__content">
+							<div class="animation animation--brid">
+								<div class="animation__bird"></div><!-- /.animation__bird -->
+
+								<div class="animation__sun"></div><!-- /.animation__sun -->
+
+								<div class="animation__grass"></div><!-- /.animation__ground -->
+							</div><!-- /.animation -->
+						</div><!-- /.card__content -->
+
+						<div class="card__aside">
+							<div class="code-preview">
+								<h3>HTML</h3>
+
+								<pre>
+									<code class="language-html">
+&lt;div class=&quot;animation animation--brid&quot;&gt;
+	&lt;div class=&quot;animation__bird&quot;&gt;&lt;/div&gt;&lt;!-- /.animation__bird --&gt;
+
+	&lt;div class=&quot;animation__sun&quot;&gt;&lt;/div&gt;&lt;!-- /.animation__sun --&gt;
+
+	&lt;div class=&quot;animation__grass&quot;&gt;&lt;/div&gt;&lt;!-- /.animation__ground --&gt;
+&lt;/div&gt;&lt;!-- /.animation --&gt;
+									</code>
+								</pre>
+
+								<h3>CSS</h3>
+
+								<pre>
+<code class="language-scss">
+.animation--brid {
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+
+	.animation__bird {
+		width: 175px;
+		overflow: hidden;
+		margin: 150px 0 0 50px;
+		animation: up-down 1s infinite alternate ease-in-out;
+	}
+
+	.animation__bird:after {
+		content: '';
+		display: block;
+		height: 151px;
+		width: 2450px;
+		background: url(../images/steps3.png) 0 0 no-repeat;
+		animation: bird 0.8s steps(14) infinite,
+	}
+
+	.animation__sun {
+		position: absolute;
+		top: -50px;
+		right: -50px;
+		width: 150px;
+		height: 150px;
+		border-radius: 50%;
+		background: #f9d71c;
+	}
+
+	.animation__grass {
+		position: absolute;
+		bottom: 0;
+		right: 100%;
+		height: 150px;
+		width: 100000px;
+		background: url(../images/grass.png) 0 0 repeat-x;
+		background-size: contain;
+		animation: moveX 1000s infinite linear reverse;
+	}
+}
+
+@keyframes bird {
+	0% {
+		transform: translateX(0);
+	}
+
+	100% {
+		transform: translateX(-2450px);
+	}
+}
+
+</code>
+								</pre>
+							</div><!-- /.code-preview -->
+						</div><!-- /.card__aside -->
+					</div><!-- /.card__inner -->
+
+					<h3>Assets used:</h3>
+
+					<ul class="list-assets list-assets--large">
+						<li>
+							<img src="assets/images/steps3.png" alt="">
+						</li>
+
+						<li>
+							<img src="assets/images/grass.png" alt="">
+						</li>
+					</ul><!-- /.list-assets -->
+				</div><!-- /.card -->
+
+				<div class="card card--alt">
+					<div class="card__inner">
+						<div class="card__content">
+							<div class="animation animation--walk">
+								<div class="animation__character"></div><!-- /.animation__character -->
+
+								<div class="animation__road"></div><!-- /.animation__road -->
+
+								<div class="animation__bench"></div><!-- /.animation__town -->
+
+								<div class="animation__car"></div><!-- /.animation__car -->
+							</div><!-- /.animation -->
+						</div><!-- /.card__content -->
+
+						<div class="card__aside">
+							<div class="code-preview">
+								<h3>HTML</h3>
+
+								<pre>
+									<code class="language-html">
+&lt;div class=&quot;animation animation--walk&quot;&gt;
+	&lt;div class=&quot;animation__character&quot;&gt;&lt;/div&gt;&lt;!-- /.animation__character --&gt;
+
+	&lt;div class=&quot;animation__road&quot;&gt;&lt;/div&gt;&lt;!-- /.animation__road --&gt;
+
+	&lt;div class=&quot;animation__bench&quot;&gt;&lt;/div&gt;&lt;!-- /.animation__town --&gt;
+
+	&lt;div class=&quot;animation__car&quot;&gt;&lt;/div&gt;&lt;!-- /.animation__car --&gt;
+&lt;/div&gt;&lt;!-- /.animation --&gt;
+									</code>
+								</pre>
+
+								<h3>CSS</h3>
+
+								<pre>
+<code class="language-scss">
+.animation--walk {
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	background: url(../images/city1.jpg) right bottom no-repeat;
+	background-size: 1610px auto;
+
+	.animation__bench {
+		position: absolute;
+		bottom: -2px;
+		z-index: 4;
+		right: 233px;
+		width: 393px;
+		height: 200px;
+		background: url(../images/bench.png) 0 0 no-repeat;
+		background-size: contain;
+	}
+
+	.animation__car {
+		position: absolute;
+		bottom: 80px;
+		left: -300px;
+		z-index: 3;
+		width: 300px;
+		height: 200px;
+		background: url(../images/car2.png) 0 0 no-repeat;
+		background-size: contain;
+		animation: moveXalt 8s infinite linear reverse;
+	}
+
+	.animation__car:before,
+	.animation__car:after {
+		content: '';
+		display: block;
+		position: absolute;
+		bottom: 65px;
+		background-size: contain;
+		background-repeat: no-repeat;
+		background-position: 0 0;
+		width: 44px;
+		height: 44px;
+		animation: rotate 2s infinite linear;
+	}
+
+	.animation__car:before {
+		background-image: url(../images/left-tire.png);
+		left: 66px;
+	}
+
+	.animation__car:after {
+		background-image: url(../images/right-tire.png);
+		right: 30px;
+		animation-delay: -1s;
+	}
+
+	.animation__character {
+		width: 182px;
+		overflow: hidden;
+		position: absolute;
+		bottom: 0;
+		z-index: 5;
+		left: -182px;
+		animation: moveXalt 5s infinite linear;
+
+	}
+
+	.animation__character:after {
+		content: '';
+		display: block;
+		height: 325px;
+		width: 1456px;
+		background: url(../images/steps1.png) 0 0 no-repeat;
+		animation: walk 0.8s steps(8) infinite,
+	}
+
+	@keyframes walk {
+		0% {
+			transform: translateX(0);
+		}
+
+		100% {
+			transform: translateX(-1456px);
+		}
+	}
+
+	@keyframes moveXalt {
+		0% {
+			transform: translateX(0);
+		}
+		100% {
+			transform: translateX(550%);
+		}
+	}
+}
+
+
+</code>
+								</pre>
+							</div><!-- /.code-preview -->
+						</div><!-- /.card__aside -->
+					</div><!-- /.card__inner -->
+
+					<h3>Assets used:</h3>
+
+					<ul class="list-assets list-assets--large">
+						<li>
+							<img src="assets/images/steps1.png" alt="">
+						</li>
+
+						<li>
+							<img src="assets/images/city1.jpg" alt="">
+						</li>
+					</ul><!-- /.list-assets -->
+
+					<ul class="list-assets">
+						<li>
+							<img src="assets/images/car2.png" alt="">
+						</li>
+
+						<li>
+							<img src="assets/images/left-tire.png" alt="" width="100" height="100">
+						</li>
+
+						<li>
+							<img src="assets/images/right-tire.png" alt="" width="100" height="100">
+						</li>
+
+						<li>
+							<img src="assets/images/bench.png" alt="">
+						</li>
+					</ul><!-- /.list-assets -->
+				</div><!-- /.card -->
+			</div><!-- /.shell -->
+		</section><!-- /.section -->
+	</div><!-- /.wrapper -->
+
+	<include src="scripts.html"></include>
+</body>
+</html>

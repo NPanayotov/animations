@@ -1,0 +1,56 @@
+/* ------------------------------------------------------------ *\
+	Card
+\* ------------------------------------------------------------ */
+
+.card {
+	box-shadow: 0 0 3px rgba(0,0,0, .3);
+	padding: 20px;
+	border-radius: 5px;
+	margin-bottom: 30px;
+
+	.card__inner {
+		display: flex;
+		justify-content: space-between;
+		position: relative;
+		margin-bottom: 20px;
+	}
+
+	.card__inner:before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 560px;
+		bottom: 0;
+		width: 1px;
+		background: #ccc;
+	}
+
+	.card__content,
+	.card__aside {
+		position: relative;
+		height: 540px;
+	}
+
+	.card__aside {
+		flex: 0 0 calc(100% - 580px);
+		overflow: auto;
+	}
+
+	.card__content {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex: 0 0 540px;
+	}
+}
+
+.card--alt {
+	.card__aside,
+	.card__content {
+		flex: 0 0 calc(50% - 20px);
+	}
+
+	.card__inner:before {
+		left: 50%;
+	}
+}
