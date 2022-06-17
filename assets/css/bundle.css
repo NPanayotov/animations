@@ -1057,6 +1057,9 @@ blockquote:last-child {
   border-radius: 5px;
   margin-bottom: 30px;
 }
+.card .card__preview:not(:only-child) {
+  margin-bottom: 20px;
+}
 .card .card__inner {
   display: -webkit-box;
   display: -ms-flexbox;
